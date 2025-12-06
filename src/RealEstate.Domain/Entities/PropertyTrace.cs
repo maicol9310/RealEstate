@@ -2,17 +2,18 @@
 {
     public class PropertyTrace
     {
-        public Guid IdPropertyTrace { get; set; }
-        public DateTime DateSale { get; set; }
-        public string Name { get; set; } = string.Empty;
-        public decimal Value { get; set; }
-        public decimal Tax { get; set; }
-        public Guid IdProperty { get; set; }
+        public Guid IdPropertyTrace { get; private set; }
+        public DateTime DateSale { get; private set; }
+        public string Name { get; private set; } = string.Empty;
+        public decimal Value { get; private set; }
+        public decimal Tax { get; private set; }
+        public Guid IdProperty { get; private set; }
 
         private PropertyTrace() { }
 
         public PropertyTrace(DateTime dateSale, string name, decimal value, decimal tax, Guid idProperty)
         {
+            if (idProperty == Guid.Empty) throw new ArgumentException("Property id required", nameof(idProperty));
             IdPropertyTrace = Guid.NewGuid();
             DateSale = dateSale;
             Name = name;

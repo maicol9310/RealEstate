@@ -14,7 +14,8 @@ namespace RealEstate.Application.Handlers
 
         public async Task<Result<IEnumerable<Property>>> Handle(GetPropertiesQuery request, CancellationToken cancellationToken)
         {
-            var list = await _repo.ListAsync(new PropertyFilter());
+            var filter = new PropertyFilter(request.MinPrice, request.MaxPrice, request.OwnerId, request.Year, request.Search);
+            var list = await _repo.ListAsync(filter, cancellationToken);
             return Result<IEnumerable<Property>>.Success(list);
         }
     }

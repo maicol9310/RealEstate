@@ -1,4 +1,5 @@
-﻿using RealEstate.Domain.Entities;
+﻿using RealEstate.Application.Queries;
+using RealEstate.Domain.Entities;
 
 namespace RealEstate.Application.Interfaces
 {
@@ -9,6 +10,4 @@ namespace RealEstate.Application.Interfaces
         void Update(Property entity);
         Task<IEnumerable<Property>> ListAsync(PropertyFilter filter, CancellationToken ct = default);
     }
-
-    public record PropertyFilter(decimal? MinPrice = null, decimal? MaxPrice = null, Guid? OwnerId = null, int? Year = null, string? Search = null);
 }
