@@ -8,11 +8,16 @@
         public string Photo { get; private set; } = string.Empty;
         public DateTime Birthday { get; private set; }
 
-        private Owner() { }
+        private readonly List<Property> _properties = new();
+        public IReadOnlyCollection<Property> Properties => _properties.AsReadOnly();
+
+        private Owner() { } // EF
 
         public Owner(string name, string address, string photo, DateTime birthday)
         {
-            if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException("Owner name required", nameof(name));
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentException("Owner name required", nameof(name));
+
             IdOwner = Guid.NewGuid();
             Name = name;
             Address = address;
@@ -22,7 +27,9 @@
 
         public void Update(string name, string address, string photo, DateTime birthday)
         {
-            if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException("Owner name required", nameof(name));
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentException("Owner name required", nameof(name));
+
             Name = name;
             Address = address;
             Photo = photo;

@@ -3,6 +3,7 @@
     public interface IUnitOfWork
     {
         IPropertyRepository Properties { get; }
-        Task<int> SaveChangesAsync(CancellationToken ct = default);
+        IOwnerRepository Owners { get; }
+       Task<int> SaveChangesAsync(CancellationToken ct = default);
     }
 }

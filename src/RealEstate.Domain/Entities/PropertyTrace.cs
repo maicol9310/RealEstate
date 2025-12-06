@@ -8,12 +8,15 @@
         public decimal Value { get; private set; }
         public decimal Tax { get; private set; }
         public Guid IdProperty { get; private set; }
+        public Property Property { get; private set; } = default!;
 
-        private PropertyTrace() { }
+        private PropertyTrace() { } 
 
         public PropertyTrace(DateTime dateSale, string name, decimal value, decimal tax, Guid idProperty)
         {
-            if (idProperty == Guid.Empty) throw new ArgumentException("Property id required", nameof(idProperty));
+            if (idProperty == Guid.Empty)
+                throw new ArgumentException("Property id required", nameof(idProperty));
+
             IdPropertyTrace = Guid.NewGuid();
             DateSale = dateSale;
             Name = name;

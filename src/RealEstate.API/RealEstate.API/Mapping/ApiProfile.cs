@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using RealEstate.Contracts.DTOs;
 using RealEstate.Domain.Entities;
+using RealEstate.Contracts.DTOs;
 
-namespace RealEstate.Application.Mappings
+namespace RealEstate.API.Mappings
 {
-    public class ApplicationProfile : Profile
+    public class ApiProfile : Profile
     {
-        public ApplicationProfile()
+        public ApiProfile()
         {
             CreateMap<Property, PropertyDto>();
             CreateMap<PropertyImage, PropertyImageDto>();

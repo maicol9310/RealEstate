@@ -4,15 +4,20 @@
     {
         public Guid IdPropertyImage { get; private set; }
         public Guid IdProperty { get; private set; }
+        public Property Property { get; private set; } = default!;
+
         public string File { get; private set; } = string.Empty;
         public bool Enabled { get; private set; } = true;
 
-        private PropertyImage() { }
+        private PropertyImage() { } // EF
 
         public PropertyImage(Guid idProperty, string file)
         {
-            if (idProperty == Guid.Empty) throw new ArgumentException("Property id required", nameof(idProperty));
-            if (string.IsNullOrWhiteSpace(file)) throw new ArgumentException("File required", nameof(file));
+            if (idProperty == Guid.Empty)
+                throw new ArgumentException("Property id required", nameof(idProperty));
+
+            if (string.IsNullOrWhiteSpace(file))
+                throw new ArgumentException("File required", nameof(file));
 
             IdPropertyImage = Guid.NewGuid();
             IdProperty = idProperty;

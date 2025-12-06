@@ -9,7 +9,6 @@
         public string CodeInternal { get; set; } = string.Empty;
         public int Year { get; set; }
         public OwnerDto? Owner { get; set; }
-        public string? ImageFile { get; set; }
         public IEnumerable<PropertyTraceDto>? Traces { get; set; }
         public IEnumerable<PropertyImageDto>? Images { get; set; }
     }
