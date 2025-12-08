@@ -1,9 +1,11 @@
-﻿using MediatR;
-using AutoMapper;
+﻿using AutoMapper;
+using MediatR;
+using Microsoft.Extensions.Logging;
+using RealEstate.Application.Handlers;
 using RealEstate.Application.Interfaces;
 using RealEstate.Application.Shared;
-using RealEstate.Domain.Entities;
 using RealEstate.Contracts.DTOs;
+using RealEstate.Domain.Entities;
 
 namespace RealEstate.Application.Features.Owners.Commands.CreateOwner
 {
@@ -12,16 +14,20 @@ namespace RealEstate.Application.Features.Owners.Commands.CreateOwner
         private readonly IUnitOfWork _uow;
         private readonly IFileService _fileService;
         private readonly IMapper _mapper;
+        private readonly ILogger<CreateOwnerCommandHandler> _logger;
 
-        public CreateOwnerCommandHandler(IUnitOfWork uow, IFileService fileService, IMapper mapper)
+        public CreateOwnerCommandHandler(IUnitOfWork uow, IFileService fileService, IMapper mapper, ILogger<CreateOwnerCommandHandler> logger)
         {
             _uow = uow;
             _fileService = fileService;
             _mapper = mapper;
+            _logger = logger;
         }
 
         public async Task<Result<OwnerDto>> Handle(CreateOwnerCommand request, CancellationToken cancellationToken)
         {
+            _logger.LogInformation("Processing Owner creation request for {Name}", request.Name);
+
             string savedFileName = string.Empty;
 
             if (!string.IsNullOrWhiteSpace(request.Base64Photo))
@@ -32,6 +38,7 @@ namespace RealEstate.Application.Features.Owners.Commands.CreateOwner
                 }
                 catch (Exception ex)
                 {
+                    _logger.LogWarning("Error saving photo");
                     return Result<OwnerDto>.Failure($"Error saving photo: {ex.Message}");
                 }
             }
@@ -43,6 +50,7 @@ namespace RealEstate.Application.Features.Owners.Commands.CreateOwner
             }
             catch (ArgumentException ex)
             {
+                _logger.LogWarning("Uncreated owner");
                 return Result<OwnerDto>.Failure(ex.Message);
             }
 
@@ -59,6 +67,8 @@ namespace RealEstate.Application.Features.Owners.Commands.CreateOwner
                     Photo = owner.Photo,
                     Birthday = owner.Birthday
                 };
+
+            _logger.LogInformation("Owner successfully created for {Name}", request.Name);
 
             return Result<OwnerDto>.Success(dto);
         }

@@ -1,9 +1,20 @@
 using Microsoft.EntityFrameworkCore;
 using RealEstate.Infrastructure.Persistence;
+using Serilog;
 
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
+
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .Enrich.FromLogContext()
+    .Enrich.WithThreadId()
+    .Enrich.WithMachineName()
+    .Enrich.WithProcessId()
+    .CreateLogger();
+
+builder.Host.UseSerilog();
 
 builder.Services.AddDbContext<RealEstateDbContext>(options =>
     options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
@@ -25,6 +36,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+app.UseSerilogRequestLogging();
 app.UseSwagger();
 app.UseSwaggerUI();
 
