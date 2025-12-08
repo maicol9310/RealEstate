@@ -12,8 +12,8 @@ using RealEstate.Infrastructure.Persistence;
 namespace RealEstate.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(RealEstateDbContext))]
-    [Migration("20251208081542_logger")]
-    partial class logger
+    [Migration("20251208162156_UserAndLog")]
+    partial class UserAndLog
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -177,6 +177,31 @@ namespace RealEstate.Infrastructure.Persistence.Migrations
                     b.HasIndex("IdProperty");
 
                     b.ToTable("PropertyTraces");
+                });
+
+            modelBuilder.Entity("RealEstate.Domain.Entities.User", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("RealEstate.Domain.Entities.Property", b =>

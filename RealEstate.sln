@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate.Infrastructure",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate.Contracts", "src\RealEstate.Contracts\RealEstate.Contracts.csproj", "{EF9A1F71-5ACE-431E-ACEB-E4EA3C2433E3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate.SharedKernel", "RealEstate.SharedKernel\RealEstate.SharedKernel.csproj", "{0D9930A9-F04C-435C-90A7-1D52A4564878}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{EF9A1F71-5ACE-431E-ACEB-E4EA3C2433E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF9A1F71-5ACE-431E-ACEB-E4EA3C2433E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF9A1F71-5ACE-431E-ACEB-E4EA3C2433E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D9930A9-F04C-435C-90A7-1D52A4564878}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D9930A9-F04C-435C-90A7-1D52A4564878}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D9930A9-F04C-435C-90A7-1D52A4564878}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D9930A9-F04C-435C-90A7-1D52A4564878}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

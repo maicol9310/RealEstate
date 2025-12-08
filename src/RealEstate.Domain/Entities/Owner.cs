@@ -15,9 +15,6 @@
 
         public Owner(string name, string address, string photo, DateTime birthday)
         {
-            if (string.IsNullOrWhiteSpace(name))
-                throw new ArgumentException("Owner name required", nameof(name));
-
             IdOwner = Guid.NewGuid();
             Name = name;
             Address = address;
@@ -27,9 +24,6 @@
 
         public void Update(string name, string address, string photo, DateTime birthday)
         {
-            if (string.IsNullOrWhiteSpace(name))
-                throw new ArgumentException("Owner name required", nameof(name));
-
             Name = name;
             Address = address;
             Photo = photo;

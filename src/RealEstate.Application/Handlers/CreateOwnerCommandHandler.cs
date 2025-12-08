@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using RealEstate.Application.Handlers;
 using RealEstate.Application.Interfaces;
-using RealEstate.Application.Shared;
+using RealEstate.SharedKernel;
 using RealEstate.Contracts.DTOs;
 using RealEstate.Domain.Entities;
+using RealEstate.Application.Commands;
 
-namespace RealEstate.Application.Features.Owners.Commands.CreateOwner
+namespace RealEstate.Application.Handlers
 {
     public class CreateOwnerCommandHandler : IRequestHandler<CreateOwnerCommand, Result<OwnerDto>>
     {

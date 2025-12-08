@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using RealEstate.Application.Commands;
 using RealEstate.Application.Interfaces;
-using RealEstate.Application.Shared;
+using RealEstate.SharedKernel;
 
 namespace RealEstate.Application.Handlers
 {

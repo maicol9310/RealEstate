@@ -176,6 +176,31 @@ namespace RealEstate.Infrastructure.Persistence.Migrations
                     b.ToTable("PropertyTraces");
                 });
 
+            modelBuilder.Entity("RealEstate.Domain.Entities.User", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("RealEstate.Domain.Entities.Property", b =>
                 {
                     b.HasOne("RealEstate.Domain.Entities.Owner", "Owner")

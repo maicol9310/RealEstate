@@ -1,4 +1,4 @@
-﻿namespace RealEstate.Application.Shared
+﻿namespace RealEstate.SharedKernel
 {
     public class Result
     {

@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using RealEstate.Application.Shared;
+using RealEstate.SharedKernel;
 using RealEstate.Contracts.DTOs;
 
 namespace RealEstate.Application.Commands

@@ -1,7 +1,7 @@
-﻿using MediatR;
+﻿using FluentValidation;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RealEstate.Application.Commands;
-using RealEstate.Application.Features.Owners.Commands.CreateOwner;
 
 namespace RealEstate.API.Controllers
 {
@@ -27,12 +27,21 @@ namespace RealEstate.API.Controllers
                 request.idProperty
             );
 
-            var result = await _mediator.Send(cmd);
+            try
+            {
+                var result = await _mediator.Send(cmd);
 
-            if (!result.IsSuccess)
-                return BadRequest(new { error = result.Error });
+                if (!result.IsSuccess)
+                    return BadRequest(new { error = result.Error });
 
-            return CreatedAtAction(nameof(Create), new { id = result.Value!.IdPropertyTrace}, result.Value);
+                return CreatedAtAction(nameof(Create), new { id = result.Value!.IdPropertyTrace }, result.Value);
+            }
+            catch (ValidationException ex)
+            {
+                // Captura errores de FluentValidation
+                var errors = ex.Errors.Select(e => e.ErrorMessage).ToList();
+                return BadRequest(new { IsSuccess = false, Errors = errors });
+            }
         }
     }
 

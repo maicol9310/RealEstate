@@ -4,5 +4,5 @@ using RealEstate.Contracts.DTOs;
 
 namespace RealEstate.Application.Commands
 {
-    public record CreatePropertyImageCommand(Guid PropertyId, string ImageBase64) : IRequest<Result<PropertyImageDto>>;
+    public record LoginCommand(string Username, string Password) : IRequest<Result<AuthDto>>;
 }

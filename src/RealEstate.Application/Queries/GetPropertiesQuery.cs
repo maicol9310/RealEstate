@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using RealEstate.Application.Shared;
+using RealEstate.SharedKernel;
 using RealEstate.Domain.Entities;
 
 namespace RealEstate.Application.Queries

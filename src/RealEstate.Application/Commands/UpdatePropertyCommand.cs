@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using RealEstate.Application.Shared;
+using RealEstate.SharedKernel;
 
 namespace RealEstate.Application.Commands
 {

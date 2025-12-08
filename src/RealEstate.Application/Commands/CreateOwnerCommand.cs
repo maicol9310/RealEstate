@@ -1,8 +1,8 @@
 ﻿using MediatR;
-using RealEstate.Application.Shared;
+using RealEstate.SharedKernel;
 using RealEstate.Contracts.DTOs;
 
-namespace RealEstate.Application.Features.Owners.Commands.CreateOwner
+namespace RealEstate.Application.Commands
 {
     public record CreateOwnerCommand(
         string Name,

@@ -1,16 +1,16 @@
 ﻿using FluentValidation;
-using RealEstate.Contracts.DTOs;
+using RealEstate.Application.Commands;
 
 namespace Hotels.Application.Validators
 {
-    public class PropertyDtoValidator : AbstractValidator<PropertyDto>
+    public class CreatePropertyCommandValidator : AbstractValidator<CreatePropertyCommand>
     {
-        public PropertyDtoValidator()
+        public CreatePropertyCommandValidator()
         {
             RuleFor(x => x.Name).NotEmpty().WithMessage("Property name is required.");
             RuleFor(x => x.Address).NotEmpty().WithMessage("Address is required.");
             RuleFor(x => x.Price).GreaterThan(0).WithMessage("Price must be greater than 0.");
-            RuleFor(x => x.Owner).NotNull().WithMessage("Owner is required.");
+            RuleFor(x => x.IdOwner).NotNull().WithMessage("Owner is required.");
         }
     }
 }

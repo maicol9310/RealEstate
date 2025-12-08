@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using RealEstate.Application.Interfaces;
 using RealEstate.Application.Queries;
-using RealEstate.Application.Shared;
+using RealEstate.SharedKernel;
 using RealEstate.Domain.Entities;
 
 namespace RealEstate.Application.Handlers
