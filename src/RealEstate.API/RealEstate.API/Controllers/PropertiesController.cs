@@ -30,9 +30,9 @@ namespace RealEstate.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] decimal? minPrice, [FromQuery] decimal? maxPrice, [FromQuery] Guid? ownerId, [FromQuery] int? year, [FromQuery] string? search)
+        public async Task<IActionResult> Get([FromQuery] decimal? minPrice, [FromQuery] decimal? maxPrice, [FromQuery] Guid? ownerId, [FromQuery] int? year)
         {
-            var query = new GetPropertiesQuery(minPrice, maxPrice, ownerId, year, search);
+            var query = new GetPropertiesQuery(minPrice, maxPrice, ownerId, year);
             var result = await _mediator.Send(query);
             if (!result.IsSuccess) return BadRequest(new { error = result.Error });
             var dtos = _mapper.Map<IEnumerable<PropertyDto>>(result.Value);
@@ -59,9 +59,9 @@ namespace RealEstate.API.Controllers
         }
 
         [HttpPost("{id:guid}/images")]
-        public async Task<IActionResult> AddImage(Guid id, [FromBody] AddImageRequest req)
+        public async Task<IActionResult> CreateImage(Guid id, [FromBody] AddImageRequest req)
         {
-            var cmd = new AddPropertyImageCommand(id, req.ImageBase64);
+            var cmd = new CreatePropertyImageCommand(id, req.ImageBase64);
             var result = await _mediator.Send(cmd);
             if (!result.IsSuccess) return BadRequest(new { error = result.Error });
             return NoContent();

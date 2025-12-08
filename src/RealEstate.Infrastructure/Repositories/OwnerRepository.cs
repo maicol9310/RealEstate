@@ -7,16 +7,13 @@ namespace RealEstate.Infrastructure.Repositories
 {
     public class OwnerRepository : IOwnerRepository
     {
-        private readonly RealEstateDbContext _context;
+        private readonly RealEstateDbContext _db;
 
-        public OwnerRepository(RealEstateDbContext context)
-        {
-            _context = context;
-        }
+        public OwnerRepository(RealEstateDbContext db) => _db = db;
 
         public async Task AddAsync(Owner owner, CancellationToken ct = default)
         {
-            await _context.Owners.AddAsync(owner, ct);
+            await _db.Owners.AddAsync(owner, ct);
         }
     }
 }

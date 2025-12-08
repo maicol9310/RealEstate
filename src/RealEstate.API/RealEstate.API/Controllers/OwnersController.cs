@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MediatR;
-using AutoMapper;
 using RealEstate.Application.Features.Owners.Commands.CreateOwner;
 
 namespace RealEstate.API.Controllers
@@ -10,12 +9,10 @@ namespace RealEstate.API.Controllers
     public class OwnersController : ControllerBase
     {
         private readonly IMediator _mediator;
-        private readonly IMapper _mapper;
 
-        public OwnersController(IMediator mediator, IMapper mapper)
+        public OwnersController(IMediator mediator)
         {
             _mediator = mediator;
-            _mapper = mapper;
         }
 
         [HttpPost]

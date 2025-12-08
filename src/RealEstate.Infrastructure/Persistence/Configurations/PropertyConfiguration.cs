@@ -22,7 +22,6 @@ namespace RealEstate.Infrastructure.Persistence.Configurations
             builder.Metadata.FindNavigation(nameof(Property.Traces))!
                 .SetPropertyAccessMode(PropertyAccessMode.Field);
 
-            // ✔ RELACIONES CORRECTAS
             builder.HasMany(p => p.Images)
                    .WithOne(pi => pi.Property)
                    .HasForeignKey(pi => pi.IdProperty)

@@ -9,7 +9,7 @@
         public string File { get; private set; } = string.Empty;
         public bool Enabled { get; private set; } = true;
 
-        private PropertyImage() { } // EF
+        private PropertyImage() { } 
 
         public PropertyImage(Guid idProperty, string file)
         {

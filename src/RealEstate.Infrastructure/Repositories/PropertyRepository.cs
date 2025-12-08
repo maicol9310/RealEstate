@@ -37,7 +37,6 @@ namespace RealEstate.Infrastructure.Repositories
             if (filter.MaxPrice is not null) query = query.Where(p => p.Price <= filter.MaxPrice);
             if (filter.OwnerId is not null) query = query.Where(p => p.IdOwner == filter.OwnerId);
             if (filter.Year is not null) query = query.Where(p => p.Year == filter.Year);
-            if (!string.IsNullOrWhiteSpace(filter.Search)) query = query.Where(p => p.Name.Contains(filter.Search) || p.Address.Contains(filter.Search));
             return await query.Include(p => p.Images).Include(p => p.Owner).ToListAsync(ct);
         }
     }

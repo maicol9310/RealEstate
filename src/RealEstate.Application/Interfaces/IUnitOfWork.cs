@@ -4,6 +4,7 @@
     {
         IPropertyRepository Properties { get; }
         IOwnerRepository Owners { get; }
-       Task<int> SaveChangesAsync(CancellationToken ct = default);
+        IPropertyImageRepository PropertyImage { get; }
+        Task<int> SaveChangesAsync(CancellationToken ct = default);
     }
 }

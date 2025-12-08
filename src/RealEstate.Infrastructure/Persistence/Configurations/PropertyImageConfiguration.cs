@@ -9,8 +9,16 @@ namespace RealEstate.Infrastructure.Persistence.Configurations
         public void Configure(EntityTypeBuilder<PropertyImage> builder)
         {
             builder.HasKey(pi => pi.IdPropertyImage);
+
             builder.Property(pi => pi.File).IsRequired();
-            builder.Property(pi => pi.Enabled).HasDefaultValue(true);
+
+            builder.Property(pi => pi.Enabled)
+                   .HasDefaultValue(true);
+            
+            builder.HasOne(pi => pi.Property)
+                   .WithMany(p => p.Images)
+                   .HasForeignKey(pi => pi.IdProperty)
+                   .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

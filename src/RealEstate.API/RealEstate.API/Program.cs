@@ -18,6 +18,7 @@ builder.Services.AddAutoMapper(cfg => cfg.AddProfile<RealEstate.Application.Mapp
 // DI: Repositories, UoW, Services
 builder.Services.AddScoped<RealEstate.Application.Interfaces.IPropertyRepository, RealEstate.Infrastructure.Repositories.PropertyRepository>();
 builder.Services.AddScoped<RealEstate.Application.Interfaces.IOwnerRepository, RealEstate.Infrastructure.Repositories.OwnerRepository>();
+builder.Services.AddScoped<RealEstate.Application.Interfaces.IPropertyImageRepository, RealEstate.Infrastructure.Repositories.PropertyImageRepository>();
 builder.Services.AddScoped<RealEstate.Application.Interfaces.IUnitOfWork, RealEstate.Infrastructure.UnitOfWork.UnitOfWork>();
 builder.Services.AddScoped<RealEstate.Application.Interfaces.IFileService, RealEstate.Infrastructure.Services.LocalFileService>();
 
