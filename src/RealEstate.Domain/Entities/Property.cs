@@ -18,7 +18,7 @@
         private readonly List<PropertyTrace> _traces = new();
         public IReadOnlyCollection<PropertyTrace> Traces => _traces.AsReadOnly();
 
-        private Property() { } // EF
+        private Property() { } 
 
         public Property(string name, string address, decimal price, string codeInternal, int year, Guid idOwner)
         {

@@ -11,7 +11,7 @@
         private readonly List<Property> _properties = new();
         public IReadOnlyCollection<Property> Properties => _properties.AsReadOnly();
 
-        private Owner() { } // EF
+        private Owner() { } 
 
         public Owner(string name, string address, string photo, DateTime birthday)
         {

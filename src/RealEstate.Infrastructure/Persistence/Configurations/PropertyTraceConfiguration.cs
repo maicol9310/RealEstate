@@ -12,6 +12,11 @@ namespace RealEstate.Infrastructure.Persistence.Configurations
             builder.Property(pt => pt.Name).IsRequired().HasMaxLength(200);
             builder.Property(pt => pt.Value).IsRequired();
             builder.Property(pt => pt.Tax).IsRequired();
+
+            builder.HasOne(pt => pt.Property)
+            .WithMany(p => p.Traces)
+            .HasForeignKey(pt => pt.IdProperty)
+            .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

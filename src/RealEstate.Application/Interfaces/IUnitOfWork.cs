@@ -5,6 +5,7 @@
         IPropertyRepository Properties { get; }
         IOwnerRepository Owners { get; }
         IPropertyImageRepository PropertyImage { get; }
+        IPropertyTraceRepository PropertyTrace { get; }
         Task<int> SaveChangesAsync(CancellationToken ct = default);
     }
 }

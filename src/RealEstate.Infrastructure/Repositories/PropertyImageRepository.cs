@@ -17,11 +17,6 @@ namespace RealEstate.Infrastructure.Repositories
             await _db.PropertyImages.AddAsync(entity, ct);
         }
 
-        public void Update(PropertyImage entity)
-        {
-            _db.PropertyImages.Update(entity);
-        }
-
         public async Task<PropertyImage?> GetByIdAsync(Guid id, CancellationToken ct = default)
         {
             return await _db.PropertyImages
