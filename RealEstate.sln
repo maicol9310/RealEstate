@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate.Contracts", "src
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate.SharedKernel", "src\RealEstate.SharedKernel\RealEstate.SharedKernel.csproj", "{DEC93D56-FCD0-3C38-CB1F-393D891DDE9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate.Application.Tests", "RealEstate.Application.Tests\RealEstate.Application.Tests.csproj", "{E7444602-D8E2-48FD-90A0-8DD4758F68FA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate.Application.Tests", "src\tests\RealEstate.Application.Tests\RealEstate.Application.Tests.csproj", "{E4D31DEE-9094-5F89-D14F-0F299952816F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +47,10 @@ Global
 		{DEC93D56-FCD0-3C38-CB1F-393D891DDE9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEC93D56-FCD0-3C38-CB1F-393D891DDE9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEC93D56-FCD0-3C38-CB1F-393D891DDE9A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E7444602-D8E2-48FD-90A0-8DD4758F68FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E7444602-D8E2-48FD-90A0-8DD4758F68FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E7444602-D8E2-48FD-90A0-8DD4758F68FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E7444602-D8E2-48FD-90A0-8DD4758F68FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4D31DEE-9094-5F89-D14F-0F299952816F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4D31DEE-9094-5F89-D14F-0F299952816F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4D31DEE-9094-5F89-D14F-0F299952816F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4D31DEE-9094-5F89-D14F-0F299952816F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

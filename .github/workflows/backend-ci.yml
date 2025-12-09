@@ -1,0 +1,49 @@
+name: Backend CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Restore Backend Solutions
+      run: |
+        dotnet restore src/RealEstate.sln
+        dotnet restore src/RealEstate.Application/RealEstate.Application.sln
+        dotnet restore src/RealEstate.Domain/RealEstate.Domain.sln
+        dotnet restore src/RealEstate.Infrastructure/RealEstate.Infrastructure.sln
+        dotnet restore src/RealEstate.SharedKernel/RealEstate.SharedKernel.sln
+
+    - name: Build Backend Solutions
+      run: |
+        dotnet build src/RealEstate.sln --no-restore --configuration Release
+        dotnet build src/RealEstate.Application/RealEstate.Application.sln --no-restore --configuration Release
+        dotnet build src/RealEstate.Domain/RealEstate.Domain.sln --no-restore --configuration Release
+        dotnet build src/RealEstate.Infrastructure/RealEstate.Infrastructure.sln --no-restore --configuration Release
+        dotnet build src/RealEstate.SharedKernel/RealEstate.SharedKernel.sln --no-restore --configuration Release
+
+    - name: Prepare TestResults folder
+      run: mkdir -p src/tests/RealEstate.Application.Tests/TestResults
+
+    - name: Run Application Tests
+      run: dotnet test src/tests/RealEstate.Application.Tests/RealEstate.Application.Tests/RealEstate.Application.Tests.csproj --verbosity normal --logger "trx;LogFileName=src/tests/RealEstate.Application.Tests/TestResults/test-results.trx"
+
+    - name: Upload test results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-results
+        path: src/tests/RealEstate.Application.Tests/TestResults/test-results.trx

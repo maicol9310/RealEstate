@@ -22,9 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\RealEstate.Application\RealEstate.Application.csproj" />
-    <ProjectReference Include="..\src\RealEstate.Contracts\RealEstate.Contracts.csproj" />
-    <ProjectReference Include="..\src\RealEstate.Domain\RealEstate.Domain.csproj" />
+    <ProjectReference Include="..\..\RealEstate.Application\RealEstate.Application.csproj" />
+    <ProjectReference Include="..\..\RealEstate.Contracts\RealEstate.Contracts.csproj" />
+    <ProjectReference Include="..\..\RealEstate.Domain\RealEstate.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
