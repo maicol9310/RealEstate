@@ -29,17 +29,17 @@ jobs:
 
     - name: Build Backend Solutions
       run: |
+        dotnet build RealEstate.sln --no-restore --configuration Release
         dotnet build src/RealEstate.Application/RealEstate.Application.csproj --no-restore --configuration Release
         dotnet build src/RealEstate.Domain/RealEstate.Domain.csproj --no-restore --configuration Release
         dotnet build src/RealEstate.Infrastructure/RealEstate.Infrastructure.csproj --no-restore --configuration Release
         dotnet build src/RealEstate.SharedKernel/RealEstate.SharedKernel.csproj --no-restore --configuration Release
-        dotnet build src/tests/RealEstate.Application.Tests/RealEstate.Application.Tests.csproj --no-restore --configuration Release
 
     - name: Prepare TestResults folder
       run: mkdir -p src/tests/RealEstate.Application.Tests/TestResults
 
     - name: Run Application Tests
-      run: dotnet test src/tests/RealEstate.Application.Tests/RealEstate.Application.Tests/RealEstate.Application.Tests.csproj --verbosity normal --logger "trx;LogFileName=src/tests/RealEstate.Application.Tests/TestResults/test-results.trx"
+      run: dotnet test src/tests/RealEstate.Application.Tests/RealEstate.Application.Tests.csproj --verbosity normal --logger "trx;LogFileName=src/tests/RealEstate.Application.Tests/TestResults/test-results.trx"
 
     - name: Upload test results
       if: always()
