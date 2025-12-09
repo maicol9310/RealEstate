@@ -21,6 +21,7 @@ jobs:
 
     - name: Restore Backend Solutions
       run: |
+        dotnet build RealEstate.sln
         dotnet restore src/RealEstate.Application/RealEstate.Application.csproj
         dotnet restore src/RealEstate.Domain/RealEstate.Domain.csproj
         dotnet restore src/RealEstate.Infrastructure/RealEstate.Infrastructure.csproj
