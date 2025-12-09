@@ -6,7 +6,6 @@ using RealEstate.Application.Interfaces;
 using RealEstate.SharedKernel;
 using RealEstate.Contracts.DTOs;
 using RealEstate.Domain.Entities;
-using Serilog;
 
 namespace RealEstate.Application.Handlers
 {

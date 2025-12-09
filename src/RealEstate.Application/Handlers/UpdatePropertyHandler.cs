@@ -3,7 +3,6 @@ using Microsoft.Extensions.Logging;
 using RealEstate.Application.Commands;
 using RealEstate.Application.Interfaces;
 using RealEstate.SharedKernel;
-using Serilog.Core;
 
 namespace RealEstate.Application.Handlers
 {
