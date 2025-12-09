@@ -21,7 +21,7 @@ jobs:
 
     - name: Restore Backend Solutions
       run: |
-        dotnet restore src/RealEstate.sln
+        dotnet restore RealEstate.sln
         dotnet restore src/RealEstate.Application/RealEstate.Application.sln
         dotnet restore src/RealEstate.Domain/RealEstate.Domain.sln
         dotnet restore src/RealEstate.Infrastructure/RealEstate.Infrastructure.sln
@@ -29,7 +29,7 @@ jobs:
 
     - name: Build Backend Solutions
       run: |
-        dotnet build src/RealEstate.sln --no-restore --configuration Release
+        dotnet build RealEstate.sln --no-restore --configuration Release
         dotnet build src/RealEstate.Application/RealEstate.Application.sln --no-restore --configuration Release
         dotnet build src/RealEstate.Domain/RealEstate.Domain.sln --no-restore --configuration Release
         dotnet build src/RealEstate.Infrastructure/RealEstate.Infrastructure.sln --no-restore --configuration Release
